@@ -10,7 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ajax": "0.0.4",
     "cheerio": "^1.0.0-rc.2",
+    "csv": "^0.3.7",
+    "d3": "^5.9.2",
+    "fast-csv": "^2.4.1",
     "node-fetch": "^2.3.0",
     "request": "^2.88.0"
   }
