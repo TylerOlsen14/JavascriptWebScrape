@@ -1,24 +1,24 @@
+var http = require('http');
 var fs = require('fs');
 var csv = require('fast-csv');
 
-var obj = csv();
+var SerialNumbers = [];
 
-
-fs.createReadStream('./SerialNumbers.csv')
+const stream = fs.createReadStream('./SerialNumbers.csv');
+var SerialNumbers = fs.createReadStream('./SerialNumbers.csv')
     .pipe(csv())
     .on("data", function(data){
-        var SerialNumbers = [];
-        var obj = parseInt(data[1]);
-        for (var i=0; i< obj.length; i++){
-            obj.push(i);
-            SerialNumbers.push(obj.concat());
-        }
+        var SerialNumbers = parseInt(data[1]);
+        // return SerialNumbers;
         console.log(SerialNumbers);
     })
-    .on('end', function(){
-        console.log('Read finished.');
-    });
+    .then("SerialNumbers", function() {
+        push
+    }    
+    // .on('end', function(){
+    //     console.log('Read finished.');
+    // });
 // var SerialNumbers = data()
 // console.log(SerialNumbers)
 
-// console.log(SerialNumbers);
+console.log(SerialNumbers);
