@@ -13,22 +13,27 @@ SerialNumbersArray = fs.createReadStream('./SerialNumbers.csv')
     .on("data", function(data){
         var SerialNumbersArray = parseInt(data[1]);
         for (let i = 0; i < SerialNumbersArray.length; i ++){
-            SerialNumbersArray.push(row[i]);
+            // SerialNumbersArray.push(row[i]);
+            request('http://www.utahcounty.gov/LandRecords/Property.asp?av_serial=' + [i], (error, response, body) => {
+                if(!error && response.statusCode === 200){
+                    const $ = cheerio.load(body);
+                    for (let i = 0; i < SerialNumbersArray.length; i ++){
+                        const td = $('table tr td table tr td table tr:nth-child(4)');
+                    // Showing our result on the console
+            }
+    }})
         }
-        console.log(SerialNumbersArray);
+        console.log(td.text());
+        // console.log(SerialNumbersArray);
         return SerialNumbersArray;
+    })
+    .on('data', function(SerialNumbersArray){
+
     })
     .on('end', function(){
         console.log('Read finished.');
     });
+    // console.log(SerialNumbersArray);
+    
 // console.log(SerialNumbersArray)
 
-request('http://www.utahcounty.gov/LandRecords/Property.asp?av_serial=10690166', (error, response, body) => {
-    if(!error && response.statusCode === 200){
-        const $ = cheerio.load(body);
-
-
-        const td = $('table tr td table tr td table tr:nth-child(4)');
-        // Showing our result on the console
-        console.log(td.text());
-    }});
