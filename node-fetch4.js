@@ -13,12 +13,10 @@ var SerialNumbers = fs.createReadStream('./SerialNumbers.csv')
         console.log(SerialNumbers);
     })
     .then("SerialNumbers", function() {
-        push
-    }    
+        push.SerialNumbers()
+    });
     // .on('end', function(){
     //     console.log('Read finished.');
     // });
 // var SerialNumbers = data()
 // console.log(SerialNumbers)
-
-console.log(SerialNumbers);
