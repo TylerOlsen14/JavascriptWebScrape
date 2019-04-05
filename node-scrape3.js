@@ -14,10 +14,10 @@ var myInterface = readline.createInterface({
 let serialNumberArray = [];
 
 myInterface
-    .on('line', async(line) => {
+    .on('line', (line) => {
     let url = ('http://www.utahcounty.gov/LandRecords/Property.asp?av_serial=' + line);
-    await serialNumberArray.push(url);
-        // console.log(url);
+    serialNumberArray.push(url);
+        console.log(url);
     })
 
 console.log(serialNumberArray)
